@@ -1,4 +1,6 @@
 
+/*
+//First Approach 
 import java.util.HashSet;
 import java.util.Scanner;
 public class  Solution {
@@ -30,4 +32,25 @@ public class  Solution {
         
         
     }
+}*/
+//Second Approach
+
+public class  Solution {
+     public static boolean containsDuplicate(int[] nums) { 
+ HashSet<Integer> set = new HashSet<>();
+        
+        for (int num : nums) {
+            // If the number is already in the set, it's a duplicate
+            if (set.contains(num)) {
+                return true;
+            }
+            // Add the current number to the set
+            set.add(num);
+        }
+        
+        // If no duplicates were found
+        return false;
+     }
 }
+    
+    
