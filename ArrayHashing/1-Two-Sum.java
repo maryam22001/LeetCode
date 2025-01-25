@@ -1,34 +1,25 @@
-
-import java.util.HashMap;
-import java.util.Scanner;
-
-public class Solution {
+class Solution {
     public int[] twoSum(int[] nums, int target) {
-        HashMap<Integer, Integer> map = new HashMap<>();
-        int complement;
-        for (int i = 0; i < nums.length; i++) {
-            complement = target - nums[i];
-            if (map.containsKey(complement)) {
-                return new int[]{i, map.get(complement)};
+        /*Use a HashMap to store the numbers in the current window and their indices.
+As the sliding window moves, add the new element to the map.
+Check if the complement (i.e., target - currentNum) exists in the map.
+If found, return the indices of the two numbers.
+Remove the oldest element when the window size exceeds the allowed range. */
+        int windowSize=1;
+        HashMap<Integer,Integer>map=new HashMap<>();
+        //sliding window 
+        for (int i=0; i<nums.length;i++){
+            int currentNum=nums[i];
+            int complement=target-currentNum;
+            if(map.containsKey(complement)){
+                return new int[]{map.get(complement),i};
+
             }
-            map.put(nums[i], i);
-        }
-        throw new IllegalArgumentException(\No solution\);
-    }
+              map.put(currentNum, i);
 
-    public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-       
-        int[] nums = new int[10001];
-        for (int i = 0; i < nums.length; i++) {
-            nums[i] = sc.nextInt();
         }
-         int target = sc.nextInt();
+        return new int[]{};
 
-        Solution solution = new Solution();
-        int[] result = solution.twoSum(nums, target);
-        System.out.println(result[0] + \ \ + result[1]);
+        
     }
 }
-
-     
