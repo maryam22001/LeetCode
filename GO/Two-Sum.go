@@ -1,14 +1,14 @@
 func twoSum(nums []int, target int) []int {
-    //iterate on both sides of the array 
-    //check the target 
-    //cant use same number twice 
-    for i, left:=  range (nums){
-        for j, right:=  range (nums){
-            if left + right == target && i!=j{
-                return []int{i,j}
-            }
-
-        }
+    //create a hash map
+    //iterate through the numbers
+    //add the numbers comblement to the hash map 
+    Map := make(map[int]int)
+    for i , num := range (nums){
+          _, ok := Map[num]
+          if ok {
+            return [] int{i,Map[num]}
+          }
+          Map[target-num] =i
     }
     
     return nil
